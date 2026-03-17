@@ -10,7 +10,7 @@ Splunk (SIEM)
 
 ## Scenario
 
-A system administrator suspects that someone is attempting to brute-force login credentials on a server. Log data was ingested into Splunk to investigate failed login attempts.
+A server was suspected to be under attack due to multiple failed login attempts. Logs were ingested into Splunk and analyzed to identify malicious activity.
 
 ## Data Source
 
@@ -21,7 +21,7 @@ Authentication logs from a simulated lab environment.
 1. Ingest authentication logs into Splunk.
 2. Search for failed login attempts.
 3. Identify IP addresses responsible for repeated failures.
-4. Determine if the pattern indicates a brute-force attack.
+4. Identify Targeted Usernames.
 
 ## Splunk Queries Used
 
@@ -62,6 +62,11 @@ index=main "Failed password"
 ## Screenshots
 
 Screenshots of the Splunk search queries and results are included in this repository.
+
+Findings
+
+The analysis revealed a high volume of failed SSH login attempts from a small number of external IP addresses.
+The behavior indicates an automated brute-force attack attempting to gain unauthorized access by guessing credentials.
 
 ## Skills Demonstrated
 
