@@ -69,11 +69,14 @@ Screenshots of the Splunk search queries and results are included in this reposi
 * Security event investigation
 * SIEM usage
 * Detection of brute-force login attempts
+* Threat analysis
+* Basic incident reporting
 
+  
 ## Mitigation Recommendations
-
 * Enable account lockout policies
 * Implement multi-factor authentication
 * Monitor repeated failed login attempts
 * Restrict login attempts from suspicious IP addresses
-
+* Restrict SSH access using firewall rules or allowlists
+  
