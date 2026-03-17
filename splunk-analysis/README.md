@@ -26,13 +26,13 @@ Authentication logs from a simulated lab environment.
 ## Splunk Queries Used
 
 Search for failed logins:
-
+(SCREENSHOT 1)
 ```
 index=security "failed login"
 ```
 
 Count failed login attempts by IP address:
-
+(SCREENSHOT 2)
 ```
 index=main "Failed password"
 | rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
@@ -40,17 +40,24 @@ index=main "Failed password"
 | sort -count
 ```
 
-Detect possible brute-force behavior:
-
+Detect  usernames attackers tried:
+(SCREENSHOT 3)
 ```
-index=security "failed login"
-| stats count by src_ip
-| where count > 10
+index=main "Failed password"
+| rex "user (?<username>\w+)"
+| stats count by username
+| sort -count
 ```
 
-## Findings
+Detect  IP → which usernames it attacked:
+(SCREENSHOT 4)
+---
+index=main "Failed password"
+| rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| rex "user (?<username>\w+)"
+| stats count by src_ip username
+| sort -count
 
-Multiple failed login attempts were observed from the same IP address within a short time period. This behavior is consistent with a brute-force attack attempting to guess user passwords.
 
 ## Screenshots
 
