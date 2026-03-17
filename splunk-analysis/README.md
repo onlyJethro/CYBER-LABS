@@ -63,7 +63,7 @@ index=main "Failed password"
 
 Screenshots of the Splunk search queries and results are included in this repository.
 
-##Findings
+## FINDINGS
 
 The analysis revealed a high volume of failed SSH login attempts from a small number of external IP addresses.
 The behavior indicates an automated brute-force attack attempting to gain unauthorized access by guessing credentials.
