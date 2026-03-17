@@ -34,8 +34,10 @@ index=security "failed login"
 Count failed login attempts by IP address:
 
 ```
-index=security "failed login"
+index=main "Failed password"
+| rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
 | stats count by src_ip
+| sort -count
 ```
 
 Detect possible brute-force behavior:
