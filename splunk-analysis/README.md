@@ -49,19 +49,20 @@ index=main "Failed password"
 | sort -count
 ```
 
-Detect  IP → which usernames it attacked:
+Detect  attacking IP + usernames attacked:
 (SCREENSHOT 4)
----
+```
 index=main "Failed password"
 | rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
 | rex "user (?<username>\w+)"
 | stats count by src_ip username
 | sort -count
-
+```
 
 ## Screenshots
 
 Screenshots of the Splunk search queries and results are included in this repository.
+
 
 ## FINDINGS
 
